@@ -9,7 +9,7 @@
 import Foundation
 
 enum HTTPMethod {
-  case get(Payload)
+  case `get`(Payload)
   case post(Payload)
   case put(Payload)
   case patch(Payload)
