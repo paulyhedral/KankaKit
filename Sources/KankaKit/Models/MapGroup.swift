@@ -1,5 +1,5 @@
 //
-//  Profile.swift
+//  MapGroup.swift
 //  KankaKit
 //
 //  Created by Paul Schifferer on 4/9/17.

@@ -1,5 +1,5 @@
 //
-//  Profile.swift
+//  PaginationItem.swift
 //  KankaKit
 //
 //  Created by Paul Schifferer on 4/9/17.
@@ -9,7 +9,7 @@
 import Foundation
 
 enum PaginationItemType: String {
-  case next, prev
+  case first, last, next, prev
 }
 
 struct PaginationItem {

@@ -1,5 +1,5 @@
 //
-//  Profile.swift
+//  ClientType.swift
 //  KankaKit
 //
 //  Created by Paul Schifferer on 4/9/17.
@@ -27,5 +27,5 @@ public protocol ClientType {
   ///   - completion: The completion block to be called when the request is complete.
   ///   - result: The request result.
   func run<Model>(
-    _ request: Request<Model>, completion: @escaping (_ result: Result<Model>) -> Void)
+    _ request: Request<Model>, completion: @escaping (_ result: Response<Model>) -> Void)
 }

@@ -1,5 +1,5 @@
 //
-//  Profile.swift
+//  Payload.swift
 //  KankaKit
 //
 //  Created by Paul Schifferer on 4/9/17.
@@ -10,7 +10,7 @@ import Foundation
 
 enum Payload {
   case parameters([Parameter]?)
-//   case media(MediaAttachment?)
+  //   case media(MediaAttachment?)
   case empty
 }
 

@@ -1,5 +1,5 @@
 //
-//  Profile.swift
+//  Pagination.swift
 //  KankaKit
 //
 //  Created by Paul Schifferer on 4/9/17.
@@ -9,6 +9,8 @@
 import Foundation
 
 public struct Pagination {
+  public let first: RequestRange?
+  public let last: RequestRange?
   /// The request range for fetching the next page.
   public let next: RequestRange?
   /// The request range for fetching the previous page.
@@ -27,6 +29,8 @@ extension Pagination {
 
     for link in links {
       switch link.type {
+      case .first: break
+      case .last: break
       case .next: nextLink = .max(id: link.id, limit: link.limit)
       case .prev: previousLink = .since(id: link.id, limit: link.limit)
       }

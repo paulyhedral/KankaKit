@@ -1,5 +1,5 @@
 //
-//  Result.swift
+//  Response.swift
 //  KankaKit
 //
 //  Created by Paul Schifferer on 6/6/17.
@@ -8,18 +8,18 @@
 
 import Foundation
 
-public enum Result<Model> {
+public enum Response<Model> {
   /// Success wraps a model and an optional pagination
-  case success(Model, Pagination?)
+  case success(Model, Pagination?, Meta?, Sync?, Date?)
   /// Failure wraps an ErrorType
   case failure(Error)
 }
 
-extension Result {
+extension Response {
   /// Convenience getter for the value.
-  public var value: Model? {
+  public var data: Model? {
     switch self {
-    case .success(let value, _): return value
+    case .success(let data, _, _, _): return data
     case .failure: return nil
     }
   }
@@ -27,7 +27,21 @@ extension Result {
   /// Convenience getter for the pagination.
   public var pagination: Pagination? {
     switch self {
-    case .success(_, let pagination): return pagination
+    case .success(_, let pagination, _, _): return pagination
+    case .failure: return nil
+    }
+  }
+
+  public var meta: Meta? {
+    switch self {
+    case .success(_, _, let meta, _): return meta
+    case .failure: return nil
+    }
+  }
+
+  public var sync: Date? {
+    switch self {
+    case .success(_, _, _, let sync): return sync
     case .failure: return nil
     }
   }

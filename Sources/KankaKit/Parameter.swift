@@ -1,5 +1,5 @@
 //
-//  Profile.swift
+//  Parameter.swift
 //  KankaKit
 //
 //  Created by Paul Schifferer on 4/9/17.
