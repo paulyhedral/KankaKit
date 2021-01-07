@@ -7,7 +7,7 @@
 //
 import Foundation
 
-public class Family: Codable {
+public class Quest: Codable {
   public let id: Int
   public let name: String
   public let entry: String
@@ -22,10 +22,13 @@ public class Family: Codable {
   public let createdBy: Int
   public let updatedAt: Date
   public let updatedBy: Int
-  public let locationId: Int
+  public let characterId: Int?
+  public let date: String
   public let type: String?
-  public let familyId: Int
-  public let members: [String]
+  public let isCompleted: Bool
+  public let parentId: Int?
+  public let characters: Int
+  public let locations: Int
 
   private enum CodingKeys: String, CodingKey {
     case id
@@ -42,9 +45,12 @@ public class Family: Codable {
     case createdBy = "created_by"
     case updatedAt = "updated_at"
     case updatedBy = "updated_by"
-    case locationId = "location_id"
+    case characterId = "character_id"
+    case date
     case type
-    case familyId
-    case members
+    case isCompleted = "is_completed"
+    case parentId = "quest_id"
+    case characters
+    case locations
   }
 }

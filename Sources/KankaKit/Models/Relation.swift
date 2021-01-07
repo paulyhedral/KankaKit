@@ -7,44 +7,26 @@
 //
 import Foundation
 
-public class Family: Codable {
-  public let id: Int
-  public let name: String
-  public let entry: String
-  public let image: URL
-  public let imageFull: URL
-  public let imageThumb: URL
-  public let hasCustomImage: Bool
+public class Relation: Codable {
+  public let ownerId: Int
+  public let targetId: Int
+  public let relation: String
+  public let attitude: Int
   public let isPrivate: Bool
-  public let entityId: Int
-  public let tags: [Tag]
+  public let isStar: Bool
+  public let color: String?
   public let createdAt: Date
-  public let createdBy: Int
   public let updatedAt: Date
-  public let updatedBy: Int
-  public let locationId: Int
-  public let type: String?
-  public let familyId: Int
-  public let members: [String]
 
   private enum CodingKeys: String, CodingKey {
-    case id
-    case name
-    case entry
-    case image
-    case imageFull = "image_full"
-    case imageThumb = "image_thumb"
-    case hasCustomImage = "has_custom_image"
+    case ownerId = "owner_id"
+    case targetId = "target_id"
+    case relation
+    case attitude
     case isPrivate = "is_private"
-    case entityId = "entity_id"
-    case tags
+    case isStar = "is_star"
+    case color = "colour"
     case createdAt = "created_at"
-    case createdBy = "created_by"
     case updatedAt = "updated_at"
-    case updatedBy = "updated_by"
-    case locationId = "location_id"
-    case type
-    case familyId
-    case members
   }
 }
