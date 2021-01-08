@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class User: Codable {
+public class User : Codable {
   public let id: Int
   public let name: String
   public let avatar: URL
 
-  private enum CodingKeys: String, CodingKey {
+  private enum CodingKeys : String, CodingKey {
     case id
     case name
     case avatar

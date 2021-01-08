@@ -9,7 +9,8 @@
 import Foundation
 
 extension DateFormatter {
-  static let kankaFormatter: DateFormatter = {
+
+    static let kankaFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
 
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
@@ -18,4 +19,5 @@ extension DateFormatter {
 
     return dateFormatter
   }()
+    
 }

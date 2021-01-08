@@ -18,7 +18,7 @@ public class Conversation: Codable {
   public let hasCustomImage: Bool
   public let isPrivate: Bool
   public let entityId: Int
-  public let tags: [Tag]
+  public let tags: [Int]
   public let createdAt: Date
   public let createdBy: Int
   public let updatedAt: Date
@@ -48,4 +48,78 @@ public class Conversation: Codable {
     case participants
     case messages
   }
+
+  public struct Create: Codable {
+    public let name : String
+    public let type : String?
+    public let parentId : Int?
+    public let tags : [Int]?
+    public let isPrivate : Bool?
+    public let image : Data?
+    public let imageURL : URL?
+
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case type
+        case parentId = "note_id"
+        case tags
+        case isPrivate = "is_private"
+        case image
+        case imageURL = "image_url"
+    }
+
+  }
+
+  public struct Update: Codable {
+    public let name : String
+    public let type : String?
+    public let parentId : Int?
+    public let tags : [Int]?
+    public let isPrivate : Bool?
+    public let image : Data?
+    public let imageURL : URL?
+
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case type
+        case parentId = "note_id"
+        case tags
+        case isPrivate = "is_private"
+        case image
+        case imageURL = "image_url"
+    }
+
+  }
+
+}
+
+public class ConversationParticipant: Codable {
+  public let conversationId: Int
+  public let createdBy: Int
+  public let characterId: Int?
+  public let userId: Int?
+
+  private enum CodingKeys: String, CodingKey {
+    case conversationId = "conversation_id"
+    case createdBy = "created_by"
+    case characterId = "character_id"
+    case userId = "user_id"
+  }
+}
+
+public class ConversationMessage: Codable {
+  public let conversationId: Int
+  public let createdBy: Int
+  public let characterId: Int?
+  public let userId: Int?
+  public let message: String
+
+  private enum CodingKeys: String, CodingKey {
+    case conversationId = "conversation_id"
+    case createdBy = "created_by"
+    case characterId = "character_id"
+    case userId = "user_id"
+    case message
+  }
+
 }

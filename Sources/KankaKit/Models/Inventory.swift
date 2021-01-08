@@ -32,4 +32,47 @@ public class Inventory: Codable {
     case position
     case visibility
   }
+
+  public struct Create: Codable {
+    public let name : String
+    public let type : String?
+    public let parentId : Int?
+    public let tags : [Int]?
+    public let isPrivate : Bool?
+    public let image : Data?
+    public let imageURL : URL?
+
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case type
+        case parentId = "note_id"
+        case tags
+        case isPrivate = "is_private"
+        case image
+        case imageURL = "image_url"
+    }
+
+  }
+
+  public struct Update: Codable {
+    public let name : String
+    public let type : String?
+    public let parentId : Int?
+    public let tags : [Int]?
+    public let isPrivate : Bool?
+    public let image : Data?
+    public let imageURL : URL?
+
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case type
+        case parentId = "note_id"
+        case tags
+        case isPrivate = "is_private"
+        case image
+        case imageURL = "image_url"
+    }
+
+  }
+
 }

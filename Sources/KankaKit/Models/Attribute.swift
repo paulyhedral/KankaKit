@@ -38,4 +38,51 @@ public class Attribute: Codable {
     case isStar
     case value
   }
+
+  public struct Create: Codable {
+    public let name : String
+    public let value : String?
+    public let defaultOrder : Int
+    public let type : String?
+    public let entityId : Int
+    public let isPrivate : Bool?
+    public let isStar : Bool?
+    public let apiKey : String?
+
+
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case value
+        case defaultOrder = "default_order"
+        case type
+        case entityId = "entity_id"
+        case isPrivate = "is_private"
+        case isStar = "is_star"
+        case apiKey = "api_key"
+    }
+  }
+
+  public struct Update: Codable {
+    public let name : String
+    public let value : String?
+    public let defaultOrder : Int
+    public let type : String?
+    public let entityId : Int
+    public let isPrivate : Bool?
+    public let isStar : Bool?
+    public let apiKey : String?
+
+
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case value
+        case defaultOrder = "default_order"
+        case type
+        case entityId = "entity_id"
+        case isPrivate = "is_private"
+        case isStar = "is_star"
+        case apiKey = "api_key"
+    }
+
+  }
 }

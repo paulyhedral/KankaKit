@@ -12,7 +12,7 @@ import Foundation
 public enum Entities {
   /// - Returns: Request for `Entity`.
   public static func entity(id: Int, campaignId: Int) -> Request<Entity> {
-    return Request<Entity>(path: "/campaigns/\(camapignId)/entities/\(id)")
+    return Request<Entity>(path: "/campaigns/\(campaignId)/entities/\(id)")
   }
 
 }

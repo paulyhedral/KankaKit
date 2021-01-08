@@ -8,19 +8,21 @@
 
 import Foundation
 
-public struct Client: ClientType {
-  let baseURL: String
-  let session: URLSession
-  public var accessToken: String?
+/**
+ API client.
+ */
+public struct Client : ClientType {
+  let baseURL : String
+  let session : URLSession
+  public var accessToken : String?
 
-  public init(baseURL: String, accessToken: String? = nil, session: URLSession = .shared) {
+  public init(baseURL : String, accessToken : String? = nil, session : URLSession = .shared) {
     self.baseURL = baseURL
     self.session = session
     self.accessToken = accessToken
   }
 
-  public func run<Model>(_ request: Request<Model>, completion: @escaping (Response<Model>) -> Void)
-  {
+  public func run<Model>(_ request : Request<Model>, completion : @escaping (Result<Response<Model>, Error>) -> Void) {
     guard
       let components = URLComponents(baseURL: baseURL, request: request),
       let url = components.url
@@ -46,18 +48,17 @@ public struct Client: ClientType {
         httpResponse.statusCode == 200
       else {
         let kankaError = try? KankaError.decode(data: data)
-        let error: ClientError =
-          kankaError.map { .kankaError($0.description) } ?? .genericError
+        let error : ClientError = kankaError.map { .kankaError($0.description) } ?? .genericError
         completion(.failure(error))
         return
       }
 
-      guard let model = try? Model.decode(data: data) else {
+      guard let response = try? Response<Model>.decode(data: data) else {
         completion(.failure(ClientError.invalidModel))
         return
       }
 
-      completion(.success(model, httpResponse.pagination))
+      completion(.success(response))
     }
 
     task.resume()

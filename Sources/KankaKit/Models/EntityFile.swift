@@ -36,4 +36,14 @@ public class EntityFile: Codable {
     case updatedAt = "updated_at"
     case updatedBy = "updated_by"
   }
+
+    public struct Create: Codable {
+        public let file : Data
+        public let visibility : Visibility
+
+        private enum CodingKeys: String, CodingKey {
+            case file
+            case visibility 
+        }
+    }
 }

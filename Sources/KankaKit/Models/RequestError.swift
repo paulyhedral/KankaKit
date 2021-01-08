@@ -8,11 +8,11 @@
 
 import Foundation
 
-class KankaError: Codable {
-    /// Reason why Mastodon returned an error.
+class KankaError : Codable {
+    /// Reason why Kanka returned an error.
     let description: String
 
-    private enum CodingKeys: String, CodingKey {
+    private enum CodingKeys : String, CodingKey {
         case description = "error"
     }
 }

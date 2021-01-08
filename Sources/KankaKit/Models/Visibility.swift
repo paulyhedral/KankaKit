@@ -9,5 +9,9 @@
 import Foundation
 
 public enum Visibility: String, Codable {
-  case all
+    case all
+    case admin
+    case adminSelf
+    case members
+    case `self`
 }

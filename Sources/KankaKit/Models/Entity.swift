@@ -12,7 +12,7 @@ public class Entity: Codable {
   public let name: String
   public let type: String
   public let childId : Int
-  public let tags : [Tag]
+  public let tags : [Int]
   public let isPrivate : Bool
   public let campaignId : Int
   public let isAttributesPrivate : Bool

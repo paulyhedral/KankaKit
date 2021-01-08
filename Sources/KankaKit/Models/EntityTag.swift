@@ -9,13 +9,34 @@
 import Foundation
 
 public class EntityTag: Codable {
-  public let id: Int
-  public let entityId: Int
-  public let tagId: Int
+    public let id: Int
+    public let entityId: Int
+    public let tagId: Int
 
-  private enum CodingKeys: String, CodingKey {
-    case id
-    case entityId = "entity_id"
-    case tagId = "tag_id"
-  }
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case entityId = "entity_id"
+        case tagId = "tag_id"
+    }
+
+    public struct Create: Codable {
+        public let entityId : Int
+        public let tagId : Int
+
+        private enum CodingKeys: String, CodingKey {
+            case entityId = "entity_id"
+            case tagId = "tag_id"
+        }
+    }
+
+    public struct Update: Codable {
+        public let entityId : Int
+        public let tagId : Int
+
+        private enum CodingKeys: String, CodingKey {
+            case entityId = "entity_id"
+            case tagId = "tag_id"
+        }
+    }
+
 }

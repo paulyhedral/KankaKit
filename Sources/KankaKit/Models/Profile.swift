@@ -9,9 +9,7 @@
 import Foundation
 
 public class Profile: Codable {
-    /// The ID of the profile.
     public let id: Int
-    /// The name of the profile.
     public let name: String
     public let avatar : URL
     public let avatarThumb : URL

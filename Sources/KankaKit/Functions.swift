@@ -43,7 +43,7 @@ func trueOrNil(_ flag: Bool) -> String? {
   return flag ? "true" : nil
 }
 
-func trim(left: Character, right: Character) -> (String) -> String {
+func trim(left: String, right: String) -> (String) -> String {
   return { string in
     guard string.hasPrefix("\(left)"), string.hasSuffix("\(right)") else { return string }
     return String(

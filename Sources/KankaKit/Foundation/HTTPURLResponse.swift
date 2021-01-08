@@ -9,7 +9,13 @@
 import Foundation
 
 extension HTTPURLResponse {
-  var pagination: Pagination? {
-    return allHeaderFields["Link"].flatMap { $0 as? String }.map(Pagination.init)
-  }
+
+    var rateLimit : Int? {
+        return self.allHeaderFields["X-RateLimit-Limit"].compactMap { $0 as? Int }.first
+    }
+
+    var remainingRequests : Int? {
+        return self.allHeaderFields["X-RateLimit-Remaining"].compactMap { $0 as? Int }.first
+    }
+
 }

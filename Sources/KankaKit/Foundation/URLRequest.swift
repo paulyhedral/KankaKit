@@ -8,14 +8,26 @@
 
 import Foundation
 
+
 extension URLRequest {
-  init<A>(url: URL, request: Request<A>, accessToken: String?) {
-    self.init(url: url, timeoutInterval: 30)
 
-    httpMethod = request.method.name
-    httpBody = request.method.httpBody
+    /**
+     Convenience initializer to create a `URLRequest` with a request body and
+     access token.
 
-    setValue(accessToken.map { "Bearer \($0)" }, forHTTPHeaderField: "Authorization")
-    setValue(request.method.contentType, forHTTPHeaderField: "Content-Type")
-  }
+     - parameters:
+        - url: The URL endpoint for the request.
+        - request: The `Request` object containing the model.
+        - accessToken: An optional access token for the request.
+     */
+    init<A>(url : URL, request : Request<A>, accessToken : String?) {
+        self.init(url: url, timeoutInterval: 30)
+
+        httpMethod = request.method.name
+        httpBody = request.method.httpBody
+
+        setValue(accessToken.map { "Bearer \($0)" }, forHTTPHeaderField: "Authorization")
+        setValue(request.method.contentType, forHTTPHeaderField: "Content-Type")
+    }
+
 }

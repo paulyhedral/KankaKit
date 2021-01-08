@@ -18,7 +18,7 @@ public class DiceRoll: Codable {
   public let hasCustomImage: Bool
   public let isPrivate: Bool
   public let entityId: Int
-  public let tags: [Tag]
+  public let tags: [Int]
   public let createdAt: Date
   public let createdBy: Int
   public let updatedAt: Date
@@ -48,4 +48,47 @@ public class DiceRoll: Codable {
     case parameters
     case rolls
   }
+
+  public struct Create: Codable {
+    public let name : String
+    public let type : String?
+    public let parentId : Int?
+    public let tags : [Int]?
+    public let isPrivate : Bool?
+    public let image : Data?
+    public let imageURL : URL?
+
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case type
+        case parentId = "note_id"
+        case tags
+        case isPrivate = "is_private"
+        case image
+        case imageURL = "image_url"
+    }
+
+  }
+
+  public struct Update: Codable {
+    public let name : String
+    public let type : String?
+    public let parentId : Int?
+    public let tags : [Int]?
+    public let isPrivate : Bool?
+    public let image : Data?
+    public let imageURL : URL?
+
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case type
+        case parentId = "note_id"
+        case tags
+        case isPrivate = "is_private"
+        case image
+        case imageURL = "image_url"
+    }
+
+  }
+
 }
